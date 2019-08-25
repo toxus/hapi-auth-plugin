@@ -1,0 +1,21 @@
+{
+  "name": "hapi-auth",
+  "version": "0.0.1",
+  "description": "Auth plugin for Hapi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Jaap van der Kreeft",
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/boom": "^7.4.2",
+    "lodash": "^4.17.15",
+    "@hapi/joi": "^15.1.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0"
+  }
+}
