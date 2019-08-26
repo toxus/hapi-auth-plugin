@@ -29,10 +29,10 @@ describe('hapi-auth', () => {
     const start = async function() {
       server.decorate('request', 'user', function() { return UserObject.User });
       await HapiAuth.auth(server, UserObject.User);
-      await server.register(hapiAuth.plugin);
+      await server.register(HapiAuth.plugin);
       await server.start();
       serverUrl = server.info.uri;
-      console.log(`Server running at: ${server.info.uri}, auth version ${hapiAuth.version}\n`);
+      console.log(`Server running at: ${server.info.uri}, auth version ${HapiAuth.version}\n`);
     };
     return start();
   });

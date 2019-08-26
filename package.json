@@ -1,5 +1,6 @@
 {
   "name": "hapi-plugin-auth",
+  "version": "0.0.2",
   "description": "Auth plugin for Hapi",
   "main": "index.js",
   "scripts": {
