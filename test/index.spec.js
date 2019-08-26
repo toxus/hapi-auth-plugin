@@ -5,7 +5,7 @@ const chaiHttp = require('chai-http'); //types');
 chai.use(chaiHttp);
 
 const assert = chai.assert;
-const hapiAuth = require('../index');
+const HapiAuth = require('../index');
 
 const UserObject = require('./user.example');
 
@@ -28,7 +28,7 @@ describe('hapi-auth', () => {
 
     const start = async function() {
       server.decorate('request', 'user', function() { return UserObject.User });
-      await hapiAuth.auth(server, UserObject.User);
+      await HapiAuth.auth(server, UserObject.User);
       await server.register(hapiAuth.plugin);
       await server.start();
       serverUrl = server.info.uri;
