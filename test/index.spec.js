@@ -66,7 +66,7 @@ describe('hapi-auth', () => {
     });
     it('login new user', () => {
       return chai.request(serverUrl)
-        .post('/login')
+        .post('/')
         .send({
           email: 'auth@test.com',
           password: '123456'
@@ -81,7 +81,7 @@ describe('hapi-auth', () => {
     });
     it('block users with no account', () => {
       return chai.request(serverUrl)
-        .post('/login')
+        .post('/')
         .send({
           email: 'auth@test.com',
           password: 'WrongWord'

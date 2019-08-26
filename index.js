@@ -7,15 +7,15 @@
 
 const authPlugin = {
   name: 'authPlugin',
-  version: '0.0.2',
+  version: '0.0.3',
   register : function(server) {
     server.route([
       require('./lib/_get'),
       require('./lib/register_post'),
-      require('./lib/login_post'),
+      require('./lib/_post'),
       require('./lib/secure_get'),
       require('./lib/token_post'),
-      require('./lib/logout_delete'),
+      require('./lib/_delete'),
       require('./lib/resetAccount_post')
     ])
   }
@@ -44,9 +44,9 @@ module.exports.auth = authConfig;
 
 module.exports.routeGet = require('./lib/_get');
 module.exports.routeRegisterPost = require('./lib/register_post');
-module.exports.routeLoginPost = require('./lib/login_post');
+module.exports.routeLoginPost = require('./lib/_post');
 module.exports.routeSecureGet = require('./lib/secure_get');
 module.exports.routeTokenPost = require('./lib/token_post');
-module.exports.routeLogoutDelete = require('./lib/logout_delete');
+module.exports.routeLogoutDelete = require('./lib/_delete');
 module.exports.routeResetAccountPost = require('./lib/resetAccount_post');
 module.exports.version = authPlugin.version;
