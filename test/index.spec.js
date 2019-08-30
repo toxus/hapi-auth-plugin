@@ -69,12 +69,15 @@ describe('hapi-auth', () => {
         .post('/')
         .send({
           email: 'auth@test.com',
-          password: '123456'
+          password: '123456',
+          session: 'theSession'
         })
         .then( (res) => {
           assert.equal(res.status, 200, 'status ok');
           assert.exists(res.body.token, 'has token');
           assert.exists(res.body.refreshToken, 'has refresh token');
+          assert.exists(res.body.session, 'has a session');
+          assert.equal(res.body.session, "theSession", 'did read it');
           token = res.body.token;
           refreshToken = res.body.refreshToken;
         })
