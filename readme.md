@@ -36,8 +36,11 @@ In the /index.js
  });
 
  const start = async function() {
+   // store our session pool with the user
+   UserObject.User.sessions = new Sessions();
+   
    server.decorate('request', 'user', function() { return UserObject.User });
-   await hapiAuth.auth(server, UserObject.User);
+   await hapiAuth.config(server, UserObject.User);
    await server.register(hapiAuth.plugin);
    await server.start();   
    console.log(`Server running at: ${server.info.uri}\n`);
@@ -54,6 +57,9 @@ const User = {
   get authKey() {
     return 'NeverShareYourSecret';
   },
+  get name() {
+    return 'ourSession'
+  },
   /**
    * registers a new user.
    *
@@ -65,12 +71,13 @@ const User = {
   },
   /**
    * Login
-   * @param info Object username, email, password
+   * @param info Object customer, username, password, session
    * @return Promise (token: ... and refreshToken }
    *   the token must be signed with the authKey and the data needed to return in the session
    */
   login(info = {}) {
-    if (info.password !== Password || info.email !== Email) {
+    
+    if (info.password !== Password || info.username !== Username) {
       return Promise.reject(new ErrorTypes.ErrorAccessDenied());
     }
     return Promise.resolve(_.merge(info, { token: JsonWebToken.sign({id: info.email}, this.authKey), refreshToken: RefreshToken}));

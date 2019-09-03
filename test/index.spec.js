@@ -28,7 +28,7 @@ describe('hapi-auth', () => {
 
     const start = async function() {
       server.decorate('request', 'user', function() { return UserObject.User });
-      await HapiAuth.auth(server, UserObject.User);
+      await HapiAuth.config(server, UserObject.User);
       await server.register(HapiAuth.plugin);
       await server.start();
       serverUrl = server.info.uri;

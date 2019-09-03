@@ -7,7 +7,7 @@
 
 const authPlugin = {
   name: 'authPlugin',
-  version: '0.0.3',
+  version: '0.0.5',
   register : function(server) {
     server.route([
       require('./lib/_get'),
@@ -28,19 +28,28 @@ const validate = function (decoded, request) {
     isValid: true,
   };
 };
-
+/**
+ * configure the authentication definition
+ * @param server
+ * @param user Object
+ *   - authKey String the authentication key
+ *   - name String the name for the autentication
+ * @returns {Promise<void>}
+ */
 const authConfig = async function(server, user) {
+  let name = user.name ? user.name : 'jwt';
   await server.register(require('hapi-auth-jwt2'));
-  server.auth.strategy('jwt', 'jwt', {
+  server.auth.strategy(name, 'jwt', {
     key: user.authKey ? user.authKey : 'YourSecretKeyHere',
     validate: validate,
     verifyOptions: { algorithm: ['HS256']}
   });
-  server.auth.default('jwt');
+  server.auth.default(name);
 };
 
 module.exports.plugin = authPlugin;
 module.exports.auth = authConfig;
+module.exports.config = authConfig;
 
 module.exports.routeGet = require('./lib/_get');
 module.exports.routeRegisterPost = require('./lib/register_post');
