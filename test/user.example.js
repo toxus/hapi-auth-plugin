@@ -76,7 +76,12 @@ const User = {
    */
   createSession(obj) {
     return obj;
+  },
+
+  getCustomer(id) {
+    return {id: id, customer: 'test', session: []}
   }
+
 };
 
 module.exports.User = User;
