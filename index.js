@@ -24,7 +24,7 @@ const authPlugin = {
 
 const validate = function (decoded, request) {
   request.auth.session = request.user().createSession(decoded);
-  request.auth.customer = requiest.user().getCustomer(decoded.id);
+  request.auth.customer = request.user().getCustomer(decoded.id);
   request.auth.sessionStart = function () {
     return this.session.startSession();
   };
