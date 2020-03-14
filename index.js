@@ -7,7 +7,7 @@
 
 const authPlugin = {
   name: 'authPlugin',
-  version: '0.0.5',
+  version: '0.2.0',
   register : function(server) {
     server.route([
       require('./lib/_get'),

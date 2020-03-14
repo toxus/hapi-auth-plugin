@@ -11,13 +11,12 @@
   "author": "Jaap van der Kreeft",
   "license": "MIT",
   "dependencies": {
-    "@hapi/boom": "^7.4.2",
-    "@hapi/joi": "^15.1.0",
+    "@hapi/hapi": "^19.1.1",
+    "@hapi/joi": "^17.1.1",
     "hapi-auth-jwt2": "^8.6.1",
     "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "@hapi/hapi": "^18.3.2",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "jsonwebtoken": "^8.5.1",
